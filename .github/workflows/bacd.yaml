@@ -2,21 +2,20 @@ name: Scan Using Bandit
 run-name: Bandit on the push code
 on: [push]
 jobs:
- sast-scan:
-  runs-on: ubuntu-latest
- 
-  steps:
-  
-   - name: checkout code
-     uses: actions/checkout@v4
-     
-   - name: install python
-     uses: - uses: actions/setup-python@v5
-     with:
-        python-version: '3.10'
+  sast-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
         
-   - name: install bandit
-     run: pip install bandit
-     
-     
-     
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+        
+      - name: Install Bandit
+        run: pip install bandit
+        
+      - name: Run Bandit
+        run: bandit -r .  # Adjust this command based on where you want Bandit to scan
