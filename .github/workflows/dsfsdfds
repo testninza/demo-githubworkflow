@@ -1,0 +1,12 @@
+name: pull dump
+run-name: pull dump
+on: [push]
+jobs:
+  sast-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        run: ${{toJson(github.event.pull_request)}}
+     
+     
